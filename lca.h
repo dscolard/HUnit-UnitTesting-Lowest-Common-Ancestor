@@ -1,4 +1,4 @@
-
+//Lowest common ancestor haskell code
 
 import Text.Printf
 
@@ -44,3 +44,5 @@ main = mapM print [
             lca_show myTree 4 6,
             lca_show myTree 3 4,
             lca_show myTree 2 4]
+
+
