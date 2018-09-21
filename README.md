@@ -12,4 +12,4 @@ Accordingly, you will be graded based on your adherence to the following procedu
 - Refine the solution, expanding your test cases to deal with awkward parameters and edge cases that push the 
   limits of your solution, enhancing your solution to deal with these.
   
-  I've chosen to tackle this assignment using Haskell and the HUnit testing framework.
+I've chosen to tackle this assignment using Haskell and the HUnit testing framework.
