@@ -1,19 +1,29 @@
-//Lowest common ancestor haskell code
+
+-- Lowest Common Ancestor on binary tree.
 
 import Text.Printf
 
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
 
+--Create tree
 myTree :: Tree Int
 myTree = Node 1 
-    (Node 2 
-        (Node 4 Empty Empty)
-        (Node 5 Empty Empty))
-    (Node 3 
-        (Node 6 Empty Empty)
-        (Node 7 Empty Empty))
+	    (Node 2 
+	        (Node 4 Empty Empty)
+	        (Node 5 Empty Empty)
+	    )
+	    (Node 3 
+	        (Node 6 
+	            (Node 10 Empty Empty) 
+	            (Node 8 Empty Empty)
+	        )
+	        (Node 7 
+	            (Node 9 Empty Empty) 
+	            Empty
+	        )
+	    )
 
-
+--Solve for common ancestor
 lca :: Eq a => Tree a -> a -> a -> Either Bool a
 lca Empty _ _ = Left False
 lca (Node v tl tr) n1 n2 = 
@@ -37,12 +47,20 @@ lca_show t n1 n2 = printf "LCA(%d,%d)=%s" n1 n2 result
                         Right a -> show a
                         _ -> "not found"
 
+--Test for examples
 main = mapM print [
-            lca_show myTree 0 9,
-            lca_show myTree 0 5,
-            lca_show myTree 4 5,
-            lca_show myTree 4 6,
-            lca_show myTree 3 4,
-            lca_show myTree 2 4]
+            lca_show myTree 0 9, --Expected: "not found"
+            lca_show myTree 0 5, --Expected: "not found"
+            lca_show myTree 4 5, --Expected: "2"
+            lca_show myTree 4 6, --Expected: "1"
+            lca_show myTree 3 4, --Expected: "1"
+            lca_show myTree 2 4, --Expected: "2"
+            lca_show myTree 9 10]--Expected: "3"
+
+
+
+
+
+
 
 
