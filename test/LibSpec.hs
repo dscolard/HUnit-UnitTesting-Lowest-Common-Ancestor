@@ -1,6 +1,7 @@
 module LibSpec (spec) where
 
-import           LCA
+import 			 lca
+import           Lib
 import           Test.Hspec
 import           Test.QuickCheck
 

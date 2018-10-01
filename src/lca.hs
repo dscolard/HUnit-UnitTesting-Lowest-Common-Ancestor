@@ -1,9 +1,14 @@
 
 -- Lowest Common Ancestor on binary tree.
 
-import Text.Printf
+module LCA
+    ( someFunc, myTree, lca, lca_show
+    ) where
 
-data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
+
+someFunc :: IO ()
+someFunc = do
+	data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
 
 --Create tree
 myTree :: Tree Int
@@ -48,16 +53,8 @@ lca_show t n1 n2 = printf "LCA(%d,%d)=%s" n1 n2 result
                         _ -> "not found"
 
 
-{-test1 :: Test
-test1 = TestCase (assertEqual "LCA for Nodes 0 & 9: " ("not found") (lca_show myTree 0 9))
-test2 = TestCase (assertEqual "LCA for Nodes 0 & 5: " ("not found") (lca_show myTree 0 5))
-tests = TestList [TestLabel "test1" test1, 
-                  TestLabel "test2" test2]
 
--- shortcut to run the tests
-run = runTestTT tests-}
-
---Test for examples
+{--Test for examples
 main = mapM print [
             lca_show myTree 0 9, --Expected: "not found"
             lca_show myTree 0 5, --Expected: "not found"
@@ -65,7 +62,7 @@ main = mapM print [
             lca_show myTree 4 6, --Expected: "1"
             lca_show myTree 3 4, --Expected: "1"
             lca_show myTree 2 4, --Expected: "2"
-            lca_show myTree 9 10]--Expected: "3"
+            lca_show myTree 9 10]--Expected: "3"-}
 
 
 
