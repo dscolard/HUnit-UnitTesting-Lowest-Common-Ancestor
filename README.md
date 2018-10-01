@@ -1,4 +1,4 @@
-Lowest Common Ancestor
+# Lowest Common Ancestor Problem
 
 CS3012 Software Engineering Assignment
 
