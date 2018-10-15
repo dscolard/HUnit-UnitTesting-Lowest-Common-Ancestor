@@ -8,25 +8,30 @@ module LCA
 import Text.Printf
 
 
-data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
+--data Tree a = Empty | Node a (Tree a) (Tree a) deriving Show
 
---Create tree
-myTree :: Tree Int
-myTree = Node 1 
-        (Node 2 
-            (Node 4 Empty Empty)
-            (Node 5 Empty Empty)
-        )
-        (Node 3 
-            (Node 6 
-                (Node 10 Empty Empty) 
-                (Node 8 Empty Empty)
-            )
-            (Node 7 
-                (Node 9 Empty Empty) 
-                Empty
-            )
-        )
+-- --Create tree
+-- myTree :: Tree Int
+-- myTree = Node 1 
+--         (Node 2 
+--             (Node 4 Empty Empty)
+--             (Node 5 Empty Empty)
+--         )
+--         (Node 3 
+--             (Node 6 
+--                 (Node 10 Empty Empty) 
+--                 (Node 8 Empty Empty)
+--             )
+--             (Node 7 
+--                 (Node 4 Empty Empty) 
+--                 Empty
+--             )
+--         )
+
+
+--Represent DAG as a list of nodes, each with a list of children nodes later in the list.
+
+
 
 --Solve for common ancestor
 lca :: Eq a => Tree a -> a -> a -> Either Bool a
@@ -42,8 +47,8 @@ lca (Node v tl tr) n1 n2 =
         (Left True, _         , True ) -> Right v
         (_        , Left True , True ) -> Right v
         (Left True, _         , False) -> Left True
-        (_         , Left True, False) -> Left True
-        (_         , _        , True ) -> Left True
+        (_        , Left True , False) -> Left True
+        (_        , _         , True ) -> Left True
         _ -> Left False
 
 --Print Result

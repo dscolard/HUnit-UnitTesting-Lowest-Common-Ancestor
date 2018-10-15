@@ -20,13 +20,13 @@ main = hspec $ do
       lca_show myTree 4 5 `shouldBe` "LCA(4,5) = 2"
 
    it "returns 'not found' for 4 6" $ do
-      lca_show myTree 4 6 `shouldBe` "LCA(4,6) = 1"
+      lca_show myTree 4 6 `shouldBe` "LCA(4,6) = 3"
 
    it "returns 'not found' for 3 4" $ do
-      lca_show myTree 3 4 `shouldBe` "LCA(3,4) = 1"
+      lca_show myTree 3 4 `shouldBe` "LCA(3,4) = 3"
 
    it "returns 'not found' for 2 4" $ do
       lca_show myTree 2 4 `shouldBe` "LCA(2,4) = 2"
 
    it "returns 'not found' for 9 10" $ do
-      lca_show myTree 9 10 `shouldBe` "LCA(9,10) = 3"
+      lca_show myTree 4 10 `shouldBe` "LCA(4,10) = 3"
