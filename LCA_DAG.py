@@ -1,37 +1,25 @@
-import networkx as nx
 
-G = nx.DiGraph()
 
-# add 5 nodes, labeled 0-4:
-map(G.add_node, range(5))
-# 1,2 depend on 0:
-G.add_edge(0,1)
-G.add_edge(0,2)
-# 3 depends on 1,2
-G.add_edge(1,3)
-G.add_edge(2,3)
-# 4 depends on 1
-G.add_edge(1,4)
+class Node:
 
-# now draw the graph:
-pos = { 0 : (0,0), 1 : (1,1), 2 : (-1,1),
-        3 : (0,2), 4 : (2,2)}
-nx.draw(G, pos, edge_color='r')
 
-def random_dag(nodes, edges):
-    """Generate a random Directed Acyclic Graph (DAG) with a given number of nodes and edges."""
-    G = nx.DiGraph()
-    for i in range(nodes):
-        G.add_node(i)
-    while edges > 0:
-        a = randint(0,nodes-1)
-        b=a
-        while b==a:
-            b = randint(0,nodes-1)
-        G.add_edge(a,b)
-        if nx.is_directed_acyclic_graph(G):
-            edges -= 1
-        else:
-            # we closed a loop!
-            G.remove_edge(a,b)
-    return G
+
+# Create Nodes
+root = Node(1)
+r2 = Node(2)
+r3 = Node(3)
+r4 = Node(4)
+r5 = Node(5)
+r6 = Node(6)
+
+# Create DAG
+root.succ = [r2,r3,r4,r5]
+r2.succ = [r6]
+r2.pred = [r2, root]
+r3.succ = [r5]
+r3.pred = [r3, root, r6]
+r4.pred = [r4, root, r6]
+r5.succ = [r6]
+r5.pred = [r5, r3, root]
+r6.succ = [r3]
+r6.pred = [r6, r2, r5, r4]
