@@ -2,7 +2,37 @@
 
 class Node:
 
+    def __init__(self, key):
+        self.key = key
+        self.pred = []
+        self.succ = []
 
+def getLCA(root, n1, n2):
+
+    if root is None:
+            return None
+
+    if root == n1 or root == n2:
+        return root.key
+
+    i=0
+    lca = []
+
+    while(i < len(n1.pred)):
+        j=0
+        while(j<len(n2.pred)):
+
+            if(n1.pred[i].key == n2.pred[j].key):
+                lca.append(n1.pred[i].key)
+                j+=1
+            else:
+                j+=1
+        i+=1
+    if lca:
+        # Return lowest common ancestor
+        return max(lca)
+    
+    return root.key
 
 # Create Nodes
 root = Node(1)
