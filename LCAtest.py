@@ -3,15 +3,6 @@ import unittest
 
 class testLCA(unittest.TestCase):
 
-	def testTree(self):
-		root = LCA.Node(1)
-		root.left = LCA.Node(2)
-		root.right = LCA.Node(4)
-		root.left.left = LCA.Node(3)
-		root.left.right = LCA.Node(11)
-		root.right.right = LCA.Node(6)
-		root.right.left = LCA.Node(7)
-
 		#		     1
 		#           /  \
 		#	       /    \
@@ -19,14 +10,20 @@ class testLCA(unittest.TestCase):
 		#        / \    /  \
 		#       3  11  7    6
 
-		self.assertEqual(2, LCA.getLCA(root, 3, 11, ))
-		self.assertEqual(2, LCA.getLCA(root, 2, 11, ))
-		self.assertEqual(1, LCA.getLCA(root, 7, 11, ))
-		self.assertEqual(1, LCA.getLCA(root, 3, 4, ))
+	def test3_11(self):
+		self.assertEqual(2, LCA.getLCA(LCA.root, 3, 11, ))
 
-		#Test unknown self
-		self.assertEqual(-1, LCA.getLCA(root, 3, 14, ))
+	def test2_11(self):
+		self.assertEqual(2, LCA.getLCA(LCA.root, 2, 11, ))
 
+	def test7_11(self):
+		self.assertEqual(1, LCA.getLCA(LCA.root, 7, 11, ))
+
+	def test3_4(self):
+		self.assertEqual(1, LCA.getLCA(LCA.root, 3, 4, ))
+
+	def test3_14(self):
+		self.assertEqual(-1, LCA.getLCA(LCA.root, 3, 14, ))
 
 	def testEmpty(self):
 		self.assertEqual(-1, LCA.getLCA(None, None, None, ))
