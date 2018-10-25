@@ -3,12 +3,12 @@ import unittest
 
 class testLCA(unittest.TestCase):
 
-		#		     1
-		#           /  \
-		#	       /    \
-		#         2      4
-		#        / \    /  \
-		#       3  11  7    6
+		#           1
+		#          /  \
+		#         /    \
+		#        2      4
+		#       / \    /  \
+		#      3  11  7    6
 
 	def test3_11(self):
 		self.assertEqual(2, LCA.getLCA(LCA.root, 3, 11, ))
